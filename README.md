@@ -5,3 +5,5 @@ My implementation of Ray Tracing In One Weekend
 
 Link to PDF of Peter Shirley's book:
 https://drive.google.com/drive/folders/14yayBb9XiL16lmuhbYhhvea8mKUUK77W
+
+Bazel (www.bazel.build) is used for building the source code. It's the public version of Blaze, Google's internal build tool.
