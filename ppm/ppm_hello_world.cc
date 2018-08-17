@@ -11,6 +11,7 @@ Usage:
 */
 
 #include <iostream>
+#include "third_party/eigen3/Eigen/Core"
 
 int main() {
   int nx = 200;
@@ -24,13 +25,10 @@ int main() {
     // Columns are left-to-right.
     for (int i = 0; i < nx; ++i) {
       // The color of the pixel is based on its position in the graphic.
-      float r = float(i) / float(nx);
-      float g = float(j) / float(ny);
-      float b = 0.2;
-      int ir = int(255.99 * r);
-      int ig = int(255.99 * g);
-      int ib = int(255.99 * b);
-      std::cout << ir << " " << ig << " " << ib << "\n";
+      Eigen::Vector3f rgb = 
+          Eigen::Vector3f(float(i) / float(nx), float(j) / float(ny), 0.2f);
+      Eigen::Vector3i irgb = (rgb * 255.99).cast<int>();
+      std::cout << irgb[0] << " " << irgb[1] << " " << irgb[2] << "\n";
     }
   }
 }
