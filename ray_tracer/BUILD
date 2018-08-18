@@ -7,3 +7,12 @@ cc_library(
 )
 
 # TODO(nloomis): unit tests for ray.h
+
+cc_binary(
+	name = "trace",
+	srcs = ["trace.cc"],
+	deps = [
+	  ":tracer",
+	  "//third_party/eigen3"
+	 ],
+)

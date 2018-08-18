@@ -7,6 +7,7 @@ namespace trace {
 
 class Ray {
  public:
+  // The direction vector does NOT need to have unit length.
   Ray(const Eigen::Vector3d& origin, const Eigen::Vector3d& direction)
       : origin_(origin), direction_(direction) {}
 
@@ -28,8 +29,8 @@ class Ray {
  private:
   const Eigen::Vector3d origin_;
   const Eigen::Vector3d direction_;
-}
+};
 
-}
+}  // namespace trace
 
-#endif RAY_TRACER_RAY_H
+#endif  // RAY_TRACER_RAY_H
