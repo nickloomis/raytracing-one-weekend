@@ -22,7 +22,7 @@ class Ray {
   // Returns the point which is "t" multiples of the ray direction away from the
   // ray origin. If direction is unit-length, t is equal to the distance along
   // the ray.
-  inline Eigen::Vector3d point_at_parameter(double t) {
+  inline Eigen::Vector3d point_at_parameter(double t) const {
     return origin_ + t * direction_;
   }
 
