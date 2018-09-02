@@ -1,6 +1,7 @@
 #include <iostream>
 #include <limits>
 #include <memory>
+#include <random>
 
 #include "ray_tracer/camera.h"
 #include "ray_tracer/hitable.h"
@@ -38,6 +39,9 @@ void TraceSphereScene(int nx, int ny, int samples_per_pixel) {
   scene.Add(make_unique<Sphere>(Eigen::Vector3d(0, 0, -1), 0.5));
   scene.Add(make_unique<Sphere>(Eigen::Vector3d(0, -100.5, -1), 100));
 
+  std::default_random_engine generator;
+  std::uniform_real_distribution<double> uniform(0.0, 1.0);
+
   std::cout << "P3\n" << nx << " " << ny << "\n255\n";
 
   for (int j = ny - 1; j >= 0; --j) {
@@ -45,8 +49,8 @@ void TraceSphereScene(int nx, int ny, int samples_per_pixel) {
       Eigen::Vector3d summed_color = Eigen::Vector3d::Zero();
       for (int s = 0; s < samples_per_pixel; ++s) {
         // (u, v) parameterizes the canvas and ranges from [0, 1] (ish).
-        double u = (i + 0.5) / static_cast<double>(nx);
-        double v = (j + 0.5) / static_cast<double>(ny);
+        double u = (i + uniform(generator)) / nx;
+        double v = (j + uniform(generator)) / ny;
         Ray ray = camera.GetRay(u, v);
         summed_color += color(ray, scene);
       }
