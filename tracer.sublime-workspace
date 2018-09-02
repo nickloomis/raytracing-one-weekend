@@ -1,0 +1,837 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"mean",
+				"mean_of_errors"
+			],
+			[
+				"abs",
+				"absolute_loss"
+			],
+			[
+				"patchCan",
+				"patchCandidate1"
+			],
+			[
+				"refre",
+				"referencePatch"
+			],
+			[
+				"referenc",
+				"referencePatch"
+			],
+			[
+				"refe",
+				"referencePatch"
+			],
+			[
+				"his",
+				"histogramFromFile"
+			],
+			[
+				"coef",
+				"coefficient_string"
+			],
+			[
+				"poly",
+				"polynomialModelResiduals"
+			],
+			[
+				"GraphEmitter",
+				"GraphEmitterOptions"
+			],
+			[
+				"p_george",
+				"p_georgekent"
+			],
+			[
+				"p_g",
+				"p_georgekent"
+			],
+			[
+				"rel",
+				"relationship"
+			],
+			[
+				"relat",
+				"relationship_label"
+			],
+			[
+				"out",
+				"output_stream"
+			],
+			[
+				"direct",
+				"direct_relations_"
+			],
+			[
+				"off",
+				"offspring_key"
+			],
+			[
+				"Add",
+				"AddTreeEdge"
+			],
+			[
+				"des",
+				"descendants"
+			],
+			[
+				"descen",
+				"descendant"
+			],
+			[
+				"downstrea",
+				"downstream_to_trace_"
+			],
+			[
+				"for",
+				"forward_list"
+			],
+			[
+				"desc",
+				"descendants"
+			],
+			[
+				"low_res_",
+				"low_res_current_image"
+			],
+			[
+				"current_ver",
+				"current_vertex_index"
+			],
+			[
+				"num",
+				"num_vertices"
+			],
+			[
+				"Line",
+				"LineBetweenVertices"
+			],
+			[
+				"Camera",
+				"CameraSbpFromRatios"
+			],
+			[
+				"viewing",
+				"viewing_distance_ratio"
+			],
+			[
+				"long",
+				"long_term_capital_gains_tax_rate"
+			],
+			[
+				"rental_",
+				"rental_with_investment_balances"
+			],
+			[
+				"amount",
+				"amount_available_to_invest"
+			],
+			[
+				"down",
+				"downpayment_pct"
+			],
+			[
+				"monthly_",
+				"monthly_utilities"
+			],
+			[
+				"Seller",
+				"SellerClosingCosts"
+			],
+			[
+				"annual_",
+				"annual_appreciation_pct"
+			],
+			[
+				"downp",
+				"downpayment_pct"
+			],
+			[
+				"mortgage",
+				"mortgage_term"
+			],
+			[
+				"Annual",
+				"AnnualAppreciation"
+			],
+			[
+				"SellerClo",
+				"SellerClosingCostTaxWriteOff"
+			],
+			[
+				"Sell",
+				"SellerClosingCosts"
+			],
+			[
+				"BuyerClo",
+				"BuyerClosingCostTaxWriteoff"
+			],
+			[
+				"Buyer",
+				"BuyerClosingCosts"
+			],
+			[
+				"equi",
+				"equity_cost"
+			],
+			[
+				"mor",
+				"mortgage_term"
+			],
+			[
+				"remaining",
+				"remaining_principal"
+			],
+			[
+				"AnnualT",
+				"AnnualPropertyTaxes"
+			],
+			[
+				"montly_",
+				"montly_utilities"
+			],
+			[
+				"AnnualCostOf",
+				"AnnualCostOfMonthlyFees"
+			],
+			[
+				"princi",
+				"principal_paid"
+			],
+			[
+				"cumul",
+				"cumulative_principal"
+			],
+			[
+				"prin",
+				"principal_paid"
+			],
+			[
+				"purchase",
+				"purchase_price"
+			],
+			[
+				"principle_",
+				"principal_reduction"
+			],
+			[
+				"interest",
+				"interest_amount"
+			],
+			[
+				"monthly",
+				"monthly_snapshot"
+			],
+			[
+				"purch",
+				"purchase_price"
+			],
+			[
+				"pur",
+				"purchase_price"
+			],
+			[
+				"other",
+				"other_estimated_fees"
+			],
+			[
+				"haz",
+				"hazards_report_fees"
+			],
+			[
+				"city_",
+				"portion_of_city_transfer_tax"
+			],
+			[
+				"county",
+				"county_transfer_tax"
+			],
+			[
+				"agent",
+				"agent_commissions"
+			],
+			[
+				"num_",
+				"num_payments"
+			],
+			[
+				"steer",
+				"steerable_filter"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "ray_tracer/ray.h",
+			"settings":
+			{
+				"buffer_size": 875,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ray_tracer/trace.cc",
+			"settings":
+			{
+				"buffer_size": 1946,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ppm/ppm_hello_world.cc",
+			"settings":
+			{
+				"buffer_size": 1090,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ray_tracer/BUILD",
+			"settings":
+			{
+				"buffer_size": 277,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "cc_library("
+			}
+		}
+	],
+	"build_system": "Packages/C++/C++ Single File.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 440.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 440.0
+	},
+	"console":
+	{
+		"height": 164.888885498,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/nloomis/code/raytracing-one-weekend/ppm/ppm_hello_world.cc",
+		"/home/nloomis/code/raytracing-one-weekend/ppm/BUILD",
+		"/home/nloomis/code/react-learn/my-app/src/index.css",
+		"/home/nloomis/code/react-learn/my-app/src/index.js",
+		"/home/nloomis/code/loomsci-examples/python/nailart.py",
+		"/home/nloomis/Downloads/lib.py",
+		"/home/nloomis/code/quizzy/matching.cc",
+		"/home/nloomis/code/quizzy/entropy.cc",
+		"/home/nloomis/code/quizzy/Makefile",
+		"/home/nloomis/code/quizzy/strings.cc",
+		"/home/nloomis/code/quizzy/modeling.cc",
+		"/home/nloomis/code/quizzy/polynomial_model.cc",
+		"/home/nloomis/code/quizzy/polynomial_model.h",
+		"/home/nloomis/code/exercises/FamilyTree/src/tree_builder.cpp",
+		"/home/nloomis/code/exercises/FamilyTree/src/tree.cpp",
+		"/home/nloomis/code/exercises/FamilyTree/src/relationship_labeler.cpp",
+		"/home/nloomis/code/exercises/FamilyTree/src/person.cpp",
+		"/home/nloomis/code/exercises/FamilyTree/src/main.cc",
+		"/home/nloomis/code/exercises/FamilyTree/src/graph_emitter.cpp",
+		"/home/nloomis/code/exercises/FamilyTree/src/tree_builder.h",
+		"/home/nloomis/code/exercises/FamilyTree/src/tree.h",
+		"/home/nloomis/code/exercises/FamilyTree/src/relationship_type.h",
+		"/home/nloomis/code/exercises/FamilyTree/src/relationship_labeler.h",
+		"/home/nloomis/code/exercises/FamilyTree/src/person.h",
+		"/home/nloomis/code/exercises/FamilyTree/src/graph_emitter.h",
+		"/home/nloomis/code/exercises/FamilyTree/src/typedefs.h",
+		"/home/nloomis/code/exercises/FamilyTree/src/tree_edge.h",
+		"/home/nloomis/code/loomsci-examples/python/ebrealestate.py",
+		"/home/nloomis/code/loomsci-examples/python/mortgage.py",
+		"/home/nloomis/code/loomsci-examples/python/imageutils.py",
+		"/home/nloomis/code/FamilyTree/src/graph_emitter.cpp",
+		"/home/nloomis/code/FamilyTree/src/relationship_labeler.cpp",
+		"/home/nloomis/code/FamilyTree/src/tree_builder.cpp",
+		"/home/nloomis/code/FamilyTree/src/person.cpp",
+		"/home/nloomis/code/FamilyTree/src/main.cc",
+		"/home/nloomis/code/FamilyTree/src/tree_builder.h",
+		"/home/nloomis/code/FamilyTree/src/relationship_labeler.h",
+		"/home/nloomis/code/FamilyTree/src/relationship_type.h",
+		"/home/nloomis/code/FamilyTree/src/tree_node.h",
+		"/home/nloomis/code/FamilyTree/src/graph_emitter.h",
+		"/home/nloomis/code/FamilyTree/src/typedefs.h",
+		"/home/nloomis/code/FamilyTree/src/person.h",
+		"/home/nloomis/code/FamilyTree/src/graph.gv",
+		"/home/nloomis/code/FamilyTree/src/relationship_name.cpp",
+		"/home/nloomis/code/FamilyTree/src/relationship_name.h",
+		"/home/nloomis/Documents/notes/mendocino notes.txt",
+		"/home/nloomis/code/astwg-glider/holocam-prior/cuda-particles/maxSIMfm.cu",
+		"/home/nloomis/code/loomsci-examples/python/cameraresolution.py",
+		"/home/nloomis/code/astwg-glider/holocam-prior/cuda-particles/propagation_kernels.cu",
+		"/home/nloomis/code/loomsci-examples/python/cv2utils.py",
+		"/home/nloomis/code/astwg-glider/holocam-prior/cuda-particles/jackfitz_particle_script.m",
+		"/home/nloomis/code/loomsci-examples/python/loomsci_demos.py",
+		"/home/nloomis/Documents/code tools to learn.txt",
+		"/home/nloomis/code/loomsci-examples/python/ledecky_wr.py",
+		"/home/nloomis/code/photoshop-math-operations.txt",
+		"/home/nloomis/code/hexgrid.py",
+		"/home/nloomis/code/loomsci-examples/python/holofocus.py",
+		"/home/nloomis/code/loomsci-examples/python/fastfocusestimation.py",
+		"/home/nloomis/code/loomsci-examples/python/digitalholography.py",
+		"/home/nloomis/Downloads/jack_fitz_directoryProcessingScript.m",
+		"/home/nloomis/Downloads/jackfitz_hologram_preprocessing.m",
+		"/home/nloomis/Downloads/jackfitz_particle_script.m",
+		"/home/nloomis/code/mortgage.py",
+		"/home/nloomis/code/gratings.py",
+		"/home/nloomis/Downloads/holokernaliasing.m",
+		"/home/nloomis/Downloads/myaa.m",
+		"/home/nloomis/Downloads/saveplot.m",
+		"/home/nloomis/Downloads/saveplotPNG.m",
+		"/home/nloomis/Documents/notes/dance_songs.txt",
+		"/shared/to_source.txt",
+		"/home/nloomis/code/simple_wxapp.py",
+		"/home/nloomis/code/ion/ion/common.gypi",
+		"/home/nloomis/code/ion/ion/gfx/attributearray.h",
+		"/home/nloomis/code/ion/ion/gfx/attributearray.cc",
+		"/home/nloomis/code/ion/ion/common_variables.gypi",
+		"/home/nloomis/code/ion/ion/build.py",
+		"/home/nloomis/code/loomsci-examples/python/readme.txt",
+		"/home/nloomis/code/loomsci-examples/python/digitalholographyunittests.py",
+		"/home/nloomis/code/loomsci-examples/python/raytracinggeometry.py",
+		"/home/nloomis/code/loomsci-examples/python/raytracing.py",
+		"/home/nloomis/code/loomsci-examples/python/utilmath.py",
+		"/home/nloomis/code/timeit.m",
+		"/home/nloomis/code/conics.py",
+		"/home/nloomis/.config/sublime-text-3/Packages/User/Python.sublime-settings",
+		"/home/nloomis/code/conics",
+		"/home/nloomis/third party 15.10 note.txt",
+		"/home/nloomis/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/nloomis/Downloads/holokern.m",
+		"/home/nloomis/Documents/notes/DS115j, SN 1510MNN691702",
+		"/home/nloomis/form 3800 notes"
+	],
+	"find":
+	{
+		"height": 30.2222222222
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"source",
+			"vector",
+			"nodemap",
+			"NodeKey",
+			"GetNodeKey",
+			"NodeKey",
+			"tree_.Add",
+			"emplace_back",
+			"labeler",
+			"RelationshipName",
+			"std::map<NodeMapKey, TreeNode>",
+			"MapKey",
+			"powerkernel",
+			"halfy",
+			"halfx",
+			"fillSfiltyKernel",
+			"fillSfiltxKernel",
+			"rintmode",
+			"simmaxdev",
+			"float_to_complexKernel",
+			"chologram_gpu",
+			"z",
+			"sy",
+			"sx",
+			"i",
+			"nz",
+			"SIM",
+			"recdev",
+			"ridxdev",
+			"rintdev",
+			"Rint",
+			"intensity_at_best_focus",
+			"sfilty",
+			"sfiltx",
+			"sfiltmag",
+			"sidxdev",
+			"Sidx",
+			"Ridx",
+			"intensity_record_mode",
+			"pixelsize",
+			"holosrc",
+			"offset",
+			"holodev",
+			"lambda",
+			"sfiltsigma",
+			"ratsimmode",
+			"ratsimdev",
+			"ratsim",
+			"SIM",
+			"powOffset",
+			"powOrder",
+			"powerKernel",
+			"intmax",
+			"localmag",
+			"AddShortKernel",
+			"complexMultKernel",
+			"sfiltMagKernel",
+			"comparereal2kernel",
+			"src",
+			"dst",
+			"float2 *",
+			"short *",
+			"float *",
+			"wall",
+			"no-unused-local-typedef"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"source_stream",
+			"GetNodeMapKey",
+			"GetNodeKey",
+			"RelationshipLabeler",
+			"NodeMap",
+			"NodeMapKey",
+			"nyquist_sample_y",
+			"nyquist_sample_x",
+			"ComputeSteerableFilterYCoefsKernel",
+			"ComputeSteerableFilterXCoefsKernel",
+			"record_min_intensity",
+			"max_sim_focus_metric_gpu",
+			"FloatToComplexKernel",
+			"complex_hologram_gpu",
+			"reconstruction_z_depths",
+			"reconstruction_depth_z",
+			"gradient_response_in_y_gpu",
+			"gradient_response_in_x_gpu",
+			"slice_index",
+			"num_z_depths",
+			"sim_focus_metric",
+			"reconstruction_gpu",
+			"index_of_min_intensity_gpu",
+			"min_intensity_gpu",
+			"min_intensity_cpu",
+			"intensity_at_best_focus_cpu",
+			"gradient_filter_in_y",
+			"gradient_filter_in_x",
+			"gradient_magnitude_gpu",
+			"index_of_max_focus_metric_gpu",
+			"index_of_max_focus_metric",
+			"index_of_min_intensity",
+			"record_intensity_at_best_focus",
+			"pixel_size",
+			"hologram_cpu",
+			"power_filter_offset",
+			"hologram_gpu",
+			"wavelength",
+			"steerable_filter_sigma",
+			"intensity_record_mode",
+			"intensity_at_best_focus_gpu",
+			"intensity_at_best_focus",
+			"focus_metric",
+			"power_filter_offset",
+			"power_filter_order",
+			"PowerKernel",
+			"maximum_intensity",
+			"image_magnitude",
+			"AddShortsKernel",
+			"ComplexMultiplicationKernel",
+			"GradientMagnitudeKernel",
+			"source",
+			"dest",
+			"float2* ",
+			"short* ",
+			"float* "
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "ray_tracer/ray.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 875,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								846,
+								846
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 54.2222222222,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "ray_tracer/trace.cc",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1946,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1522,
+								1522
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "ppm/ppm_hello_world.cc",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1090,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1079,
+								1079
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "ray_tracer/BUILD",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 277,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								277,
+								277
+							]
+						],
+						"settings":
+						{
+							"auto_name": "cc_library(",
+							"syntax": "Packages/C#/Build.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.2222222222
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.540265726681,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 28.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "tracer.sublime-project",
+	"replace":
+	{
+		"height": 55.1111111111
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 1,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 169.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

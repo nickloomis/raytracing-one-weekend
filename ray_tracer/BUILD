@@ -1,10 +1,12 @@
 cc_library(
     name = "tracer",
     srcs = [
+        "camera.cc",
         "hitable_list.cc",
         "sphere.cc",
     ],
     hdrs = [
+        "camera.h",
         "hitable.h",
         "hitable_list.h",
         "memory_util.h",
