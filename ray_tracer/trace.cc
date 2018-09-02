@@ -27,7 +27,7 @@ Eigen::Vector3d color(const Ray& ray, const Hitable& scene) {
   }
 }
 
-void TraceSphereScene(int nx, int ny) {
+void TraceSphereScene(int nx, int ny, int samples_per_pixel) {
   Eigen::Vector3d lower_left_corner(-2, -1, -1);
   Eigen::Vector3d canvas_width(4, 0, 0);
   Eigen::Vector3d canvas_height(0, 2, 0);
@@ -42,13 +42,16 @@ void TraceSphereScene(int nx, int ny) {
 
   for (int j = ny - 1; j >= 0; --j) {
     for (int i = 0; i < nx; ++i) {
-      // (u, v) parameterizes the canvas and ranges from [0, 1] (ish).
-      double u = (i + 0.5) / static_cast<double>(nx);
-      double v = (j + 0.5) / static_cast<double>(ny);
-      Ray ray = camera.GetRay(u, v);
-
-      Eigen::Vector3d pixel_color = color(ray, scene);
-            Eigen::Vector3i irgb = (pixel_color * 255.99).cast<int>();
+      Eigen::Vector3d summed_color = Eigen::Vector3d::Zero();
+      for (int s = 0; s < samples_per_pixel; ++s) {
+        // (u, v) parameterizes the canvas and ranges from [0, 1] (ish).
+        double u = (i + 0.5) / static_cast<double>(nx);
+        double v = (j + 0.5) / static_cast<double>(ny);
+        Ray ray = camera.GetRay(u, v);
+        summed_color += color(ray, scene);
+      }
+      Eigen::Vector3d pixel_color = summed_color / samples_per_pixel;
+      Eigen::Vector3i irgb = (pixel_color * 255.99).cast<int>();
       std::cout << irgb[0] << " " << irgb[1] << " " << irgb[2] << "\n";
     }
   }
@@ -59,6 +62,7 @@ void TraceSphereScene(int nx, int ny) {
 int main() {
   int nx = 200;
   int ny = 100;
-  trace::TraceSphereScene(nx, ny);
+  int samples_per_pixel = 100;
+  trace::TraceSphereScene(nx, ny, samples_per_pixel);
   return 0;
 }
