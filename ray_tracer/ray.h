@@ -1,5 +1,5 @@
-#ifndef RAY_TRACER_RAY_H
-#define RAY_TRACER_RAY_H
+#ifndef RAY_TRACER_RAY_H_
+#define RAY_TRACER_RAY_H_
 
 #include "third_party/eigen3/Eigen/Core"
 
@@ -33,4 +33,4 @@ class Ray {
 
 }  // namespace trace
 
-#endif  // RAY_TRACER_RAY_H
+#endif  // RAY_TRACER_RAY_H_
