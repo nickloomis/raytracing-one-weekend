@@ -26,11 +26,3 @@ Eigen::Vector3d RandomInUnitSphere();
 }  // namespace math_util
 
 #endif  // RAY_TRACER/MATH_UTIL_H_
-
-/*
-Notes:
-2) Would like to make a DefaultRandom class which makes uniform() avaiable
-   in a global/static call. Look at Singleton and lazy-static-pointer design
-   methods for that class.
-3) Ready to test/implement into a diffuse color generator in the ray tracer
-*/
