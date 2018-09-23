@@ -19,8 +19,6 @@ cc_library(
     copts = ["-O3"],
 )
 
-# TODO(nloomis): unit tests for ray.h
-
 cc_binary(
 	name = "trace",
 	srcs = ["trace.cc"],
@@ -28,4 +26,14 @@ cc_binary(
 	  ":tracer",
 	  "//third_party/eigen3"
 	 ],
+)
+
+# Template for unit tests:
+cc_test(
+	name = "unit_test",
+	srcs = ["unit_test.cc"],
+	copts = ["-Iexternal/gtest/include"],
+	deps = [
+      "@gtest//:main",
+	],
 )
