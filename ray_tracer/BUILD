@@ -3,12 +3,14 @@ cc_library(
     srcs = [
         "camera.cc",
         "hitable_list.cc",
+        "math_util.cc",
         "sphere.cc",
     ],
     hdrs = [
         "camera.h",
         "hitable.h",
         "hitable_list.h",
+        "math_util.h",
         "memory_util.h",
         "ray.h",
         "sphere.h",
