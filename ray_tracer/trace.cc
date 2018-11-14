@@ -6,6 +6,8 @@
 #include "ray_tracer/camera.h"
 #include "ray_tracer/hitable.h"
 #include "ray_tracer/hitable_list.h"
+#include "ray_tracer/image_util.h"
+#include "ray_tracer/math_util.h"
 #include "ray_tracer/memory_util.h"
 #include "ray_tracer/ray.h"
 #include "ray_tracer/sphere.h"
@@ -15,10 +17,12 @@ namespace trace {
 
 Eigen::Vector3d color(const Ray& ray, const Hitable& scene) {
   double t_max = std::numeric_limits<double>::infinity();
-  double t_min = std::numeric_limits<double>::epsilon();
+  double t_min = std::numeric_limits<double>::epsilon() * 1000;  // to avoid numerical errors
   HitRecord hit;
   if (scene.Hit(ray, t_min, t_max, &hit)) {
-    return 0.5 * (hit.normal + Eigen::Vector3d::Ones());
+    Eigen::Vector3d target = hit.point + hit.normal + 
+        math_util::RandomOnUnitSphere();
+    return 0.5 * color(Ray{hit.point, target - hit.point}, scene);
   } else {
     Eigen::Vector3d unit_direction = ray.direction().normalized();
     double t = 0.5 * (unit_direction.y() + 1);
@@ -55,7 +59,9 @@ void TraceSphereScene(int nx, int ny, int samples_per_pixel) {
         summed_color += color(ray, scene);
       }
       Eigen::Vector3d pixel_color = summed_color / samples_per_pixel;
-      Eigen::Vector3i irgb = (pixel_color * 255.99).cast<int>();
+      Eigen::Vector3d srgb_pixel_color =
+          image_util::LinearRgbToSrgb(pixel_color);
+      Eigen::Vector3i irgb = (srgb_pixel_color * 255.99).cast<int>();
       std::cout << irgb[0] << " " << irgb[1] << " " << irgb[2] << "\n";
     }
   }

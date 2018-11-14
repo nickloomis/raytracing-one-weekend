@@ -3,6 +3,7 @@ cc_library(
     srcs = [
         "camera.cc",
         "hitable_list.cc",
+        "image_util.cc",
         "math_util.cc",
         "sphere.cc",
     ],
@@ -10,6 +11,7 @@ cc_library(
         "camera.h",
         "hitable.h",
         "hitable_list.h",
+        "image_util.h",
         "math_util.h",
         "memory_util.h",
         "ray.h",
