@@ -27,8 +27,8 @@ class Ray {
   }
 
  private:
-  const Eigen::Vector3d origin_;
-  const Eigen::Vector3d direction_;
+  Eigen::Vector3d origin_;
+  Eigen::Vector3d direction_;
 };
 
 }  // namespace trace

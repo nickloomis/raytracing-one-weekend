@@ -6,10 +6,13 @@
 
 namespace trace {
 
+class Material;
+
 struct HitRecord {
   double t;
   Eigen::Vector3d point;
   Eigen::Vector3d normal;
+  Material* material;
 };
 
 // Defines an abstract object which can be hit by a ray.
