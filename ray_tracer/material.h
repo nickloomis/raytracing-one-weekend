@@ -31,7 +31,11 @@ class Lambertian : public Material {
 
 class Metal : public Material {
  public:
-  Metal(const Eigen::Vector3d& albedo);
+  // "fuzziness" is a measure of microfacet randomness modelled by the metallic
+  // material. A fuzziness of 0 is a perfect mirror which follows the underlying
+  // shape, while a fuzziness of 1 gives an approximately diffuse orientation of
+  // the microfacets. Fuzziness of (0, 1) is allowed.
+  Metal(const Eigen::Vector3d& albedo, double fuzziness);
 
   bool Scatter(const Ray& ray_in,
                const HitRecord& hit,
@@ -40,6 +44,7 @@ class Metal : public Material {
 
  private:
   const Eigen::Vector3d albedo_;
+  const double fuzziness_;
 };
 
 }  // namespace trace
