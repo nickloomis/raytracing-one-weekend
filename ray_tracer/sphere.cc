@@ -2,8 +2,9 @@
 
 namespace trace {
 
-Sphere::Sphere(const Eigen::Vector3d& center, double radius)
-  : center_(center), radius_(radius) {}
+Sphere::Sphere(const Eigen::Vector3d& center, double radius,
+               std::shared_ptr<Material> material)
+  : center_(center), radius_(radius), material_(material) {}
 
 bool Sphere::Hit(const Ray& ray, double tmin, double tmax, HitRecord* hit)
  const {
@@ -21,6 +22,7 @@ bool Sphere::Hit(const Ray& ray, double tmin, double tmax, HitRecord* hit)
     hit->t = root1;
     hit->point = ray.point_at_parameter(root1);
     hit->normal = (hit->point - center_) / radius_;
+    hit->material = material_.get();
     return true;
   }
   double root2 = (-b_coefficient + sqrt(discriminant)) / (2 * a_coefficient);
@@ -28,6 +30,7 @@ bool Sphere::Hit(const Ray& ray, double tmin, double tmax, HitRecord* hit)
     hit->t = root2;
     hit->point = ray.point_at_parameter(root2);
     hit->normal = (hit->point - center_) / radius_;
+    hit->material = material_.get();
     return true;
   }
   return false;

@@ -30,7 +30,16 @@ class Lambertian : public Material {
 };
 
 class Metal : public Material {
+ public:
+  Metal(const Eigen::Vector3d& albedo);
 
+  bool Scatter(const Ray& ray_in,
+               const HitRecord& hit,
+               Eigen::Vector3d* attenuation,
+               Ray* ray_out) const override;
+
+ private:
+  const Eigen::Vector3d albedo_;
 };
 
 }  // namespace trace
