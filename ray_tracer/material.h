@@ -16,6 +16,18 @@ class Material {
                        Eigen::Vector3d* attenuation, Ray* ray_out) const = 0;
 };
 
+class Dielectric : public Material {
+ public:
+  Dielectric(double refractive_index);
+
+  bool Scatter(const Ray& ray_in,
+               const HitRecord& hit,
+               Eigen::Vector3d* attenuation,
+               Ray* ray_out) const override;
+ private:
+  const double refractive_index_;
+};
+
 class Lambertian : public Material {
  public:
   Lambertian(const Eigen::Vector3d& albedo);
