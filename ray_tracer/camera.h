@@ -8,6 +8,8 @@ namespace trace {
 
 class Camera {
  public:
+  Camera(double vertical_fov_deg, double aspect_ratio);
+
   Camera(const Eigen::Vector3d& lower_left_corner,
          const Eigen::Vector3d& canvas_width,
          const Eigen::Vector3d& canvas_height,
@@ -19,10 +21,10 @@ class Camera {
   Ray GetRay(double u, double v);
 
  private:
-  const Eigen::Vector3d lower_left_corner_;
-  const Eigen::Vector3d canvas_width_;
-  const Eigen::Vector3d canvas_height_;
-  const Eigen::Vector3d camera_origin_;
+  Eigen::Vector3d lower_left_corner_;
+  Eigen::Vector3d canvas_width_;
+  Eigen::Vector3d canvas_height_;
+  Eigen::Vector3d camera_origin_;
 };
 
 }  // namespace trace

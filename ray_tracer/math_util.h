@@ -24,6 +24,9 @@ class Random {
 // Returns a point randomly distributed on the surface of a unit sphere.
 Eigen::Vector3d RandomOnUnitSphere();
 
+template <typename T>
+T DegToRad(T angle_deg) { return M_PI * angle_deg / 180.0; }
+
 }  // namespace math_util
 
 #endif  // RAY_TRACER/MATH_UTIL_H_
