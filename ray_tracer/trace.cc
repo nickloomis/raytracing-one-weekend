@@ -38,11 +38,12 @@ Eigen::Vector3d color(const Ray& ray, const Hitable& scene, int depth) {
 }
 
 void TraceSphereScene(int nx, int ny, int samples_per_pixel) {
-  Eigen::Vector3d lower_left_corner(-2, -1, -1);
-  Eigen::Vector3d canvas_width(4, 0, 0);
-  Eigen::Vector3d canvas_height(0, 2, 0);
-  Eigen::Vector3d camera_origin(0, 0, 0);
-  Camera camera(lower_left_corner, canvas_width, canvas_height, camera_origin);
+  Eigen::Vector3d look_from(-2, 2, 1);
+  Eigen::Vector3d look_at(0, 0, -1);
+  Eigen::Vector3d camera_up(0, 1, 0);
+  double vertical_fov_deg = 90;
+  double aspect_ratio = double(nx) / double(ny);
+  Camera camera(look_from, look_at, camera_up, vertical_fov_deg, aspect_ratio);
 
 // TODO(nloomis): add make_shared<Material...> to spheres.
   HitableList scene;

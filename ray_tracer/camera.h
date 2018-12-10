@@ -8,12 +8,16 @@ namespace trace {
 
 class Camera {
  public:
-  Camera(double vertical_fov_deg, double aspect_ratio);
-
-  Camera(const Eigen::Vector3d& lower_left_corner,
-         const Eigen::Vector3d& canvas_width,
-         const Eigen::Vector3d& canvas_height,
-         const Eigen::Vector3d& camera_origin);
+  // look_from: camera's location
+  // look_at: point the camera is aimed towards
+  // up: vector which points in the upward direction; the orthogonal projection
+  //     of the up vector onto the camera plane is used if up is not in the
+  //     camera plane
+  // vertical_fov_deg: field of view in degrees in the "up" direction
+  // aspect_ratio: horizontal FOV relative to the vertical FOV. A value of 1.5
+  //      means that the horizontal is 1.5x larger than the vertical.
+  Camera(const Eigen::Vector3d& look_from, const Eigen::Vector3d& look_at,
+    const Eigen::Vector3d& up, double vertical_fov_deg, double aspect_ratio);
 
   // Returns a ray originating from the camera and aimed towards the point (u,v)
   // in the camera's canvas. u corresponds to the canvas width and is in [0, 1];
@@ -21,10 +25,10 @@ class Camera {
   Ray GetRay(double u, double v);
 
  private:
+  const Eigen::Vector3d camera_origin_;
   Eigen::Vector3d lower_left_corner_;
   Eigen::Vector3d canvas_width_;
   Eigen::Vector3d canvas_height_;
-  Eigen::Vector3d camera_origin_;
 };
 
 }  // namespace trace
