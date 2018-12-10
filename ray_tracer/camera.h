@@ -17,18 +17,21 @@ class Camera {
   // aspect_ratio: horizontal FOV relative to the vertical FOV. A value of 1.5
   //      means that the horizontal is 1.5x larger than the vertical.
   Camera(const Eigen::Vector3d& look_from, const Eigen::Vector3d& look_at,
-    const Eigen::Vector3d& up, double vertical_fov_deg, double aspect_ratio);
+    const Eigen::Vector3d& up, double vertical_fov_deg, double aspect_ratio,
+    double distance_to_image_plane);
 
-  // Returns a ray originating from the camera and aimed towards the point (u,v)
-  // in the camera's canvas. u corresponds to the canvas width and is in [0, 1];
-  // v is the canvas height and is also [0, 1] range.
-  Ray GetRay(double u, double v);
+  // Returns a ray originating from the camera and aimed towards the point (s,t)
+  // in the camera's canvas. s corresponds to the canvas width and is in [0, 1];
+  // t is the canvas height and is also [0, 1] range.
+  Ray GetRay(double s, double t);
 
  private:
   const Eigen::Vector3d camera_origin_;
   Eigen::Vector3d lower_left_corner_;
   Eigen::Vector3d canvas_width_;
   Eigen::Vector3d canvas_height_;
+  Eigen::Vector3d u_;
+  Eigen::Vector3d v_;
 };
 
 }  // namespace trace

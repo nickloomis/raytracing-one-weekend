@@ -43,7 +43,7 @@ void TraceSphereScene(int nx, int ny, int samples_per_pixel) {
   Eigen::Vector3d camera_up(0, 1, 0);
   double vertical_fov_deg = 90;
   double aspect_ratio = double(nx) / double(ny);
-  Camera camera(look_from, look_at, camera_up, vertical_fov_deg, aspect_ratio);
+  Camera camera(look_from, look_at, camera_up, vertical_fov_deg, aspect_ratio, 1.0);
 
 // TODO(nloomis): add make_shared<Material...> to spheres.
   HitableList scene;
