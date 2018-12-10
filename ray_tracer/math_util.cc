@@ -34,4 +34,10 @@ Eigen::Vector3d RandomOnUnitSphere() {
     // TODO(nloomis): unit tests!!!!
 }
 
+Eigen::Vector3d RandomInUnitDisk() {
+  double theta = 2 * M_PI * Random::Default()->Uniform();
+  double radius = sqrt(Random::Default()->Uniform());
+  return Eigen::Vector3d(radius * std::cos(theta), radius * std::sin(theta), 0);
+}
+
 }  // namespace math_util

@@ -24,6 +24,10 @@ class Random {
 // Returns a point randomly distributed on the surface of a unit sphere.
 Eigen::Vector3d RandomOnUnitSphere();
 
+// Returns a point randomly distributed in a disk of unit radius in the
+// (x, y) plane.
+Eigen::Vector3d RandomInUnitDisk();
+
 template <typename T>
 T DegToRad(T angle_deg) { return M_PI * angle_deg / 180.0; }
 
