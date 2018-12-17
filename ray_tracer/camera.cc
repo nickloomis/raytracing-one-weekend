@@ -32,7 +32,6 @@ Camera::Camera(const Eigen::Vector3d& look_from, const Eigen::Vector3d& look_at,
 Ray Camera::GetRay(double s, double t) {
   Eigen::Vector3d rd = lens_radius_ * math_util::RandomInUnitDisk();
   Eigen::Vector3d offset = u_ * rd.x() + v_ * rd.y();
-  //Eigen::Vector3d offset{0, 0, 0};
   Eigen::Vector3d ray_position = camera_origin_ + offset;
   Eigen::Vector3d ray_direction = lower_left_corner_ - camera_origin_ + 
       s * canvas_width_ + t * canvas_height_;
