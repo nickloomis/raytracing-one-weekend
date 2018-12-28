@@ -4,12 +4,13 @@
 #include <random>
 
 #include "ray_tracer/camera.h"
+#include "ray_tracer/eigen_rgb_image_wrapper.h"
 #include "ray_tracer/hitable.h"
 #include "ray_tracer/hitable_list.h"
-#include "ray_tracer/image_util.h"
 #include "ray_tracer/material.h"
 #include "ray_tracer/math_util.h"
 #include "ray_tracer/memory_util.h"
+#include "ray_tracer/ppm_writer.h"
 #include "ray_tracer/ray.h"
 #include "ray_tracer/sphere.h"
 #include "third_party/eigen3/Eigen/Core"
@@ -44,7 +45,7 @@ void TraceSphereScene(int nx, int ny, int samples_per_pixel) {
   double vertical_fov_deg = 90;
   double aspect_ratio = double(nx) / double(ny);
   double image_distance = (look_from - look_at).norm();
-  double aperture_diameter = 0.5;
+  double aperture_diameter = 0.05;
   Camera camera(look_from, look_at, camera_up, vertical_fov_deg, aspect_ratio, image_distance, aperture_diameter);
 
   HitableList scene;
@@ -62,9 +63,9 @@ void TraceSphereScene(int nx, int ny, int samples_per_pixel) {
   std::default_random_engine generator;
   std::uniform_real_distribution<double> uniform(0.0, 1.0);
 
-  std::cout << "P3\n" << nx << " " << ny << "\n255\n";
+  image_util::EigenRgbImageWrapper image(nx, ny);
 
-  for (int j = ny - 1; j >= 0; --j) {
+  for (int j = 0; j < ny; ++j) {
     for (int i = 0; i < nx; ++i) {
       Eigen::Vector3d summed_color = Eigen::Vector3d::Zero();
       for (int s = 0; s < samples_per_pixel; ++s) {
@@ -75,12 +76,13 @@ void TraceSphereScene(int nx, int ny, int samples_per_pixel) {
         summed_color += color(ray, scene, 0);
       }
       Eigen::Vector3d pixel_color = summed_color / samples_per_pixel;
-      Eigen::Vector3d srgb_pixel_color =
-          image_util::LinearRgbToSrgb(pixel_color);
-      Eigen::Vector3i irgb = (srgb_pixel_color * 255.99).cast<int>();
-      std::cout << irgb[0] << " " << irgb[1] << " " << irgb[2] << "\n";
+      image(i, j) = pixel_color;
     }
   }
+
+  image_util::PpmWriter writer;
+  writer.Write(image);
+
 }
 
 }  // namespace trace

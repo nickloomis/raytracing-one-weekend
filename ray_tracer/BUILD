@@ -1,9 +1,26 @@
 cc_library(
+    name = "image_util",
+    srcs = [
+        "eigen_rgb_image_wrapper.cc",
+        "image_util.cc",
+        "ppm_writer.cc",
+    ],
+    hdrs = [
+        "eigen_rgb_image_wrapper.h",
+        "image_util.h",
+        "ppm_writer.h",
+    ],
+    deps = [
+        "//third_party/eigen3",
+    ],
+    copts = ["-O3"],
+)
+
+cc_library(
     name = "tracer",
     srcs = [
         "camera.cc",
         "hitable_list.cc",
-        "image_util.cc",
         "material.cc",
         "math_util.cc",
         "sphere.cc",
@@ -12,14 +29,15 @@ cc_library(
         "camera.h",
         "hitable.h",
         "hitable_list.h",
-        "image_util.h",
         "material.h",
         "math_util.h",
         "memory_util.h",
         "ray.h",
         "sphere.h",
     ],
-    deps = ["//third_party/eigen3"],
+    deps = [
+        "//third_party/eigen3",
+    ],
     copts = ["-O3"],
 )
 
@@ -27,6 +45,7 @@ cc_binary(
 	name = "trace",
 	srcs = ["trace.cc"],
 	deps = [
+      ":image_util",
 	  ":tracer",
 	  "//third_party/eigen3"
 	 ],
