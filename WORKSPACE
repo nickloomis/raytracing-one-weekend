@@ -5,3 +5,9 @@ new_http_archive(
     build_file = "gtest.BUILD",
     strip_prefix = "googletest-release-1.7.0",
 )
+
+git_repository(
+    name = "com_github_gflags_gflags",
+    remote = "https://github.com/gflags/gflags.git",
+    tag = "v2.2.2"
+)

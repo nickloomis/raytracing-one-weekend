@@ -47,7 +47,8 @@ cc_binary(
 	deps = [
       ":image_util",
 	  ":tracer",
-	  "//third_party/eigen3"
+      "@com_github_gflags_gflags//:gflags",
+	  "//third_party/eigen3",
 	 ],
 )
 

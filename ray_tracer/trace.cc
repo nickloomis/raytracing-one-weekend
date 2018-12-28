@@ -3,6 +3,7 @@
 #include <memory>
 #include <random>
 
+#include "gflags/gflags.h"
 #include "ray_tracer/camera.h"
 #include "ray_tracer/eigen_rgb_image_wrapper.h"
 #include "ray_tracer/hitable.h"
@@ -14,6 +15,11 @@
 #include "ray_tracer/ray.h"
 #include "ray_tracer/sphere.h"
 #include "third_party/eigen3/Eigen/Core"
+
+DEFINE_int32(nx, 200, "Number of x-direction pixels");
+DEFINE_int32(ny, 100, "Number of y-direction pixels");
+DEFINE_int32(samples, 100, "Samples per pixel");
+DEFINE_double(aperture_diameter, 0.1, "Camera aperture in world units");
 
 namespace trace {
 
@@ -45,9 +51,10 @@ void TraceSphereScene(int nx, int ny, int samples_per_pixel) {
   double vertical_fov_deg = 90;
   double aspect_ratio = double(nx) / double(ny);
   double image_distance = (look_from - look_at).norm();
-  double aperture_diameter = 0.05;
+  double aperture_diameter = FLAGS_aperture_diameter;
   Camera camera(look_from, look_at, camera_up, vertical_fov_deg, aspect_ratio, image_distance, aperture_diameter);
 
+  // TODO(nloomis): function to build the scene
   HitableList scene;
   scene.Add(make_unique<Sphere>(Eigen::Vector3d(0, 0, -1),
       0.5, std::make_shared<Lambertian>(Eigen::Vector3d(0.8, 0.3, 0.3))));
@@ -80,17 +87,15 @@ void TraceSphereScene(int nx, int ny, int samples_per_pixel) {
     }
   }
 
+  // TODO(nloomis): TraceFoo should return an image. Writing it out should be
+  // done elsewhere.
   image_util::PpmWriter writer;
   writer.Write(image);
-
 }
 
 }  // namespace trace
 
 int main() {
-  int nx = 200;
-  int ny = 100;
-  int samples_per_pixel = 100;
-  trace::TraceSphereScene(nx, ny, samples_per_pixel);
+  trace::TraceSphereScene(FLAGS_nx, FLAGS_ny, FLAGS_samples);
   return 0;
 }
