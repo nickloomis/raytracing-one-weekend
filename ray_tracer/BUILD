@@ -20,7 +20,7 @@ cc_library(
     deps = [
         "//third_party/eigen3",
     ],
-    copts = ["-O3"],
+    copts = ["-O3", "-fopenmp"],
 )
 
 cc_binary(
