@@ -1,5 +1,5 @@
-#ifndef RAY_TRACER_EIGEN_RGB_IMAGE_WRAPPER_H_
-#define RAY_TRACER_EIGEN_RGB_IMAGE_WRAPPER_H_
+#ifndef PPM_EIGEN_RGB_IMAGE_WRAPPER_H_
+#define PPM_EIGEN_RGB_IMAGE_WRAPPER_H_
 
 #include "third_party/eigen3/Eigen/Core"
 
@@ -26,4 +26,4 @@ class EigenRgbImageWrapper {
 
 }  // namespace image_util
 
-#endif  // RAY_TRACER_EIGEN_RGB_IMAGE_WRAPPER_H_
+#endif  // PPM_EIGEN_RGB_IMAGE_WRAPPER_H_

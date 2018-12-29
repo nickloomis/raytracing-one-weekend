@@ -1,7 +1,7 @@
-#ifndef RAY_TRACER_PPM_WRITER_H_
-#define RAY_TRACER_PPM_WRITER_H_
+#ifndef PPM_PPM_WRITER_H_
+#define PPM_PPM_WRITER_H_
 
-#include "ray_tracer/eigen_rgb_image_wrapper.h"
+#include "ppm/eigen_rgb_image_wrapper.h"
 
 namespace image_util {
 
@@ -29,4 +29,4 @@ class PpmWriter {
 
 }  // namespace image_util
 
-#endif  // RAY_TRACER_PGM_WRITER_H_
+#endif  // PPM_PPM_WRITER_H_

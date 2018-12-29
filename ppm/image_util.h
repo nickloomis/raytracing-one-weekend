@@ -1,5 +1,5 @@
-#ifndef RAY_TRACER_IMAGE_UTIL_H_
-#define RAY_TRACER_IMAGE_UTIL_H_
+#ifndef PPM_IMAGE_UTIL_H_
+#define PPM_IMAGE_UTIL_H_
 
 #include "third_party/eigen3/Eigen/Core"
 
@@ -11,4 +11,4 @@ Eigen::Vector3d LinearRgbToSrgb(const Eigen::Vector3d& linear_rgb);
 
 }  // namespace image_util
 
-#endif  // RAY_TRACER_IMAGE_UTIL_H_
+#endif  // PPM_IMAGE_UTIL_H_

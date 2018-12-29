@@ -4,14 +4,14 @@
 #include <random>
 
 #include "gflags/gflags.h"
+#include "ppm/eigen_rgb_image_wrapper.h"
+#include "ppm/ppm_writer.h"
 #include "ray_tracer/camera.h"
-#include "ray_tracer/eigen_rgb_image_wrapper.h"
 #include "ray_tracer/hitable.h"
 #include "ray_tracer/hitable_list.h"
 #include "ray_tracer/material.h"
 #include "ray_tracer/math_util.h"
 #include "ray_tracer/memory_util.h"
-#include "ray_tracer/ppm_writer.h"
 #include "ray_tracer/ray.h"
 #include "ray_tracer/sphere.h"
 #include "third_party/eigen3/Eigen/Core"

@@ -1,22 +1,4 @@
 cc_library(
-    name = "image_util",
-    srcs = [
-        "eigen_rgb_image_wrapper.cc",
-        "image_util.cc",
-        "ppm_writer.cc",
-    ],
-    hdrs = [
-        "eigen_rgb_image_wrapper.h",
-        "image_util.h",
-        "ppm_writer.h",
-    ],
-    deps = [
-        "//third_party/eigen3",
-    ],
-    copts = ["-O3"],
-)
-
-cc_library(
     name = "tracer",
     srcs = [
         "camera.cc",
@@ -45,9 +27,9 @@ cc_binary(
 	name = "trace",
 	srcs = ["trace.cc"],
 	deps = [
-      ":image_util",
 	  ":tracer",
       "@com_github_gflags_gflags//:gflags",
+      "//ppm:ppm",
 	  "//third_party/eigen3",
 	 ],
 )

@@ -1,9 +1,9 @@
-#include "ray_tracer/ppm_writer.h"
+#include "ppm/ppm_writer.h"
 
 #include <iostream>
 
+#include "ppm/image_util.h"
 #include "third_party/eigen3/Eigen/Core"
-#include "ray_tracer/image_util.h"
 
 namespace image_util {
 

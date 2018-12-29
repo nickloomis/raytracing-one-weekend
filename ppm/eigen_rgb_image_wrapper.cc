@@ -1,4 +1,4 @@
-#include "ray_tracer/eigen_rgb_image_wrapper.h"
+#include "ppm/eigen_rgb_image_wrapper.h"
 
 namespace image_util {
 

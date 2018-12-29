@@ -1,4 +1,4 @@
-#include "ray_tracer/image_util.h"
+#include "ppm/image_util.h"
 
 namespace image_util {
 
