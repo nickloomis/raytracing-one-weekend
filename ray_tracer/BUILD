@@ -20,7 +20,7 @@ cc_library(
     deps = [
         "//third_party/eigen3",
     ],
-    copts = ["-O3", "-fopenmp"],
+    copts = ["-O3"],
 )
 
 cc_binary(
@@ -31,7 +31,9 @@ cc_binary(
       "@com_github_gflags_gflags//:gflags",
       "//ppm:ppm",
 	  "//third_party/eigen3",
-	 ],
+	],
+    copts = ["-O3", "-fopenmp"],
+    linkopts = ["-fopenmp"],
 )
 
 # Template for unit tests:
