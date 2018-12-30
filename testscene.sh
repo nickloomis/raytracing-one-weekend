@@ -1,7 +1,8 @@
 BINARYPATH="bazel-bin/ray_tracer/"
+IMAGE_FILENAME="traced_image.ppm"
 echo "Removing test.ppm file..."
-rm ${BINARYPATH}test.ppm
+rm ${IMAGE_FILENAME}
 echo "Running ray tracer..."
-${BINARYPATH}/trace >> ${BINARYPATH}test.ppm
+${BINARYPATH}/trace
 echo "Displaying result (test.ppm)..."
-display -sample 400% ${BINARYPATH}test.ppm
+display -sample 400% ${IMAGE_FILENAME}

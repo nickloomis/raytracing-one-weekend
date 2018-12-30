@@ -20,6 +20,7 @@ DEFINE_int32(nx, 200, "Number of x-direction pixels");
 DEFINE_int32(ny, 100, "Number of y-direction pixels");
 DEFINE_int32(samples, 100, "Samples per pixel");
 DEFINE_double(aperture_diameter, 0.1, "Camera aperture in world units");
+DEFINE_string(filename, "traced_image.ppm", "Output image filename");
 
 namespace trace {
 
@@ -92,12 +93,13 @@ void TraceSphereScene(int nx, int ny, int samples_per_pixel) {
   // TODO(nloomis): TraceFoo should return an image. Writing it out should be
   // done elsewhere.
   image_util::PpmWriter writer;
-  writer.Write(image);
+  writer.Write(image, FLAGS_filename);
 }
 
 }  // namespace trace
 
-int main() {
+int main(int argc, char* argv[]) {
+  gflags::ParseCommandLineFlags(&argc, &argv, true);
   trace::TraceSphereScene(FLAGS_nx, FLAGS_ny, FLAGS_samples);
   return 0;
 }
