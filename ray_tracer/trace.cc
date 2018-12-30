@@ -72,8 +72,9 @@ void TraceSphereScene(int nx, int ny, int samples_per_pixel) {
 
   image_util::EigenRgbImageWrapper image(nx, ny);
 
+  // collapse(2) causes the par-for to be over both j and i.
+  #pragma omp parallel for schedule(dynamic) collapse(2)
   for (int j = 0; j < ny; ++j) {
-    #pragma omp parallel for
     for (int i = 0; i < nx; ++i) {
       Eigen::Vector3d summed_color = Eigen::Vector3d::Zero();
       for (int s = 0; s < samples_per_pixel; ++s) {
