@@ -39,6 +39,44 @@ HitableList BuildScene() {
   return scene;
 }
 
+HitableList BuildRandomSphereScene() {
+  const double kDiffuseProbability = 0.8;
+  const double kMetalCumulativeProbability = 0.95;
+
+  HitableList scene;
+  scene.Add(make_unique<Sphere>(Eigen::Vector3d(0, -1000, 0), 
+    1000, std::make_shared<Lambertian>(Eigen::Vector3d(0.5, 0.5, 0.5))));
+  for (int a = -11; a < 11; ++a) {
+    for (int b = -11; b < 11; ++b) {
+      Eigen::Vector3d center(a + 0.9 * math_util::Random::Default()->Uniform(),
+                             0.2,
+                             b + 0.9 * math_util::Random::Default()->Uniform());
+      if ((center - Eigen::Vector3d(4, 0.2, 0)).norm() <= 0.9) {
+        continue;
+      }
+      double material_cdf = math_util::Random::Default()->Uniform();
+      std::shared_ptr<Material> material;
+      if (material_cdf < kDiffuseProbability) {
+        // Use a diffuse material.
+        material = Lambertian::CreateRandom();
+      } else if (material_cdf < kMetalCumulativeProbability) {
+        // Use a metalic coating.
+        material = Metal::CreateRandom();
+      } else {
+        material = std::make_shared<Dielectric>(1.5);
+      }
+      scene.Add(make_unique<Sphere>(center, 0.2, material));
+    }
+  }
+  scene.Add(make_unique<Sphere>(Eigen::Vector3d(0, 1, 0), 1.0,
+      std::make_shared<Dielectric>(1.5)));
+  scene.Add(make_unique<Sphere>(Eigen::Vector3d(-4, 1, 0), 1.0,
+      std::make_shared<Lambertian>(Eigen::Vector3d(0.4, 0.2, 0.1))));
+  scene.Add(make_unique<Sphere>(Eigen::Vector3d(4, 1, 0), 1.0,
+      std::make_shared<Metal>(Eigen::Vector3d(0.7, 0.6, 0.5), 0.0)));
+  return scene;
+}
+
 Eigen::Vector3d color(const Ray& ray, const Hitable& scene, int depth) {
   const int kMaxDepth = 50;
   double t_max = std::numeric_limits<double>::infinity();
@@ -62,7 +100,7 @@ Eigen::Vector3d color(const Ray& ray, const Hitable& scene, int depth) {
 
 image_util::EigenRgbImageWrapper TraceSphereScene(int nx, int ny,
                                                   int samples_per_pixel) {
-  Eigen::Vector3d look_from(-2, 2, 1);
+  Eigen::Vector3d look_from(-4, 4, 1);
   Eigen::Vector3d look_at(0, 0, -1);
   Eigen::Vector3d camera_up(0, 1, 0);
   double vertical_fov_deg = 90;
@@ -72,7 +110,8 @@ image_util::EigenRgbImageWrapper TraceSphereScene(int nx, int ny,
   Camera camera(look_from, look_at, camera_up, vertical_fov_deg, aspect_ratio, image_distance, aperture_diameter);
 
   // TODO(nloomis): function to build the scene
-  HitableList scene = BuildScene();
+  //HitableList scene = BuildScene();
+  HitableList scene = BuildRandomSphereScene();
 
   std::default_random_engine generator;
   std::uniform_real_distribution<double> uniform(0.0, 1.0);

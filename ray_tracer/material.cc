@@ -98,6 +98,13 @@ bool Dielectric::Scatter(const Ray& ray_in,
 
 Lambertian::Lambertian(const Eigen::Vector3d& albedo) : albedo_(albedo) {}
 
+std::shared_ptr<Lambertian> Lambertian::CreateRandom() {
+  return std::make_shared<Lambertian>(Eigen::Vector3d(
+      math_util::RandomProduct(),
+      math_util::RandomProduct(),
+      math_util::RandomProduct()));
+}
+
 bool Lambertian::Scatter(const Ray& ray_in, const HitRecord& hit,
                          Eigen::Vector3d* attenuation, Ray* ray_out) const {
   const Eigen::Vector3d target = hit.point + hit.normal +
@@ -111,6 +118,14 @@ bool Lambertian::Scatter(const Ray& ray_in, const HitRecord& hit,
 Metal::Metal(const Eigen::Vector3d& albedo, double fuzziness) 
     : albedo_(albedo),
       fuzziness_(ClipToUnit(fuzziness)) {}
+
+std::shared_ptr<Metal> Metal::CreateRandom() {
+  return std::make_shared<Metal>(
+    Eigen::Vector3d(0.5 * (1 + math_util::Random::Default()->Uniform()),
+                    0.5 * (1 + math_util::Random::Default()->Uniform()),
+                    0.5 * (1 + math_util::Random::Default()->Uniform())),
+    0.5 * math_util::Random::Default()->Uniform());
+}
 
 bool Metal::Scatter(const Ray& ray_in, const HitRecord& hit,
   Eigen::Vector3d* attenuation, Ray* ray_out) const {

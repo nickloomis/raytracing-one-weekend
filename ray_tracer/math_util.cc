@@ -40,4 +40,9 @@ Eigen::Vector3d RandomInUnitDisk() {
   return Eigen::Vector3d(radius * std::cos(theta), radius * std::sin(theta), 0);
 }
 
+double RandomProduct() {
+  // TODO(nloomis): use a single transformed distribution instead.
+  return Random::Default()->Uniform() * Random::Default()->Uniform();
+}
+
 }  // namespace math_util

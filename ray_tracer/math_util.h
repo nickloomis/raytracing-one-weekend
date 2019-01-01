@@ -28,6 +28,9 @@ Eigen::Vector3d RandomOnUnitSphere();
 // (x, y) plane.
 Eigen::Vector3d RandomInUnitDisk();
 
+// Returns the product of Uniform() * Uniform().
+double RandomProduct();
+
 template <typename T>
 T DegToRad(T angle_deg) { return M_PI * angle_deg / 180.0; }
 

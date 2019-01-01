@@ -1,6 +1,8 @@
 #ifndef RAY_TRACER_MATERIAL_H_
 #define RAY_TRACER_MATERIAL_H_
 
+#include <memory>
+
 #include "ray_tracer/hitable.h"
 #include "ray_tracer/ray.h"
 #include "third_party/eigen3/Eigen/Core"
@@ -32,6 +34,9 @@ class Lambertian : public Material {
  public:
   Lambertian(const Eigen::Vector3d& albedo);
 
+  // Returns a new Lambertian material with a randomly chosen color.
+  static std::shared_ptr<Lambertian> CreateRandom();
+
   bool Scatter(const Ray& ray_in,
                const HitRecord& hit,
                Eigen::Vector3d* attenuation,
@@ -48,6 +53,9 @@ class Metal : public Material {
   // shape, while a fuzziness of 1 gives an approximately diffuse orientation of
   // the microfacets. Fuzziness of (0, 1) is allowed.
   Metal(const Eigen::Vector3d& albedo, double fuzziness);
+
+  // Returns a new Metal material with a randomly chosen color and fuzziness.
+  static std::shared_ptr<Metal> CreateRandom();
 
   bool Scatter(const Ray& ray_in,
                const HitRecord& hit,
