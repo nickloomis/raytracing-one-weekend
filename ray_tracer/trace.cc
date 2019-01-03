@@ -19,6 +19,13 @@
 DEFINE_int32(nx, 200, "Number of x-direction pixels");
 DEFINE_int32(ny, 100, "Number of y-direction pixels");
 DEFINE_int32(samples, 100, "Samples per pixel");
+DEFINE_double(look_from_x, 5, "Look-from x position (lateral)");
+DEFINE_double(look_from_y, 2, "Look-from y position (height)");
+DEFINE_double(look_from_z, 3, "Look-from z position (distance)");
+DEFINE_double(look_at_x, 1, "Look-at x position (lateral)");
+DEFINE_double(look_at_y, 0, "Look-at y position (height)");
+DEFINE_double(look_at_z, -1, "Look-at z position (distance)");
+DEFINE_double(vertical_fov, 90, "Vertical field-of-view in degrees");
 DEFINE_double(aperture_diameter, 0.1, "Camera aperture in world units");
 DEFINE_string(filename, "traced_image.ppm", "Output image filename");
 
@@ -100,24 +107,23 @@ Eigen::Vector3d color(const Ray& ray, const Hitable& scene, int depth) {
 
 image_util::EigenRgbImageWrapper TraceSphereScene(int nx, int ny,
                                                   int samples_per_pixel) {
-  Eigen::Vector3d look_from(-4, 4, 1);
-  Eigen::Vector3d look_at(0, 0, -1);
+  Eigen::Vector3d look_from(FLAGS_look_from_x,
+                            FLAGS_look_from_y,
+                            FLAGS_look_from_z);
+  Eigen::Vector3d look_at(FLAGS_look_at_x,
+                          FLAGS_look_at_y,
+                          FLAGS_look_at_z);
   Eigen::Vector3d camera_up(0, 1, 0);
-  double vertical_fov_deg = 90;
+  double vertical_fov_deg = FLAGS_vertical_fov;
   double aspect_ratio = double(nx) / double(ny);
   double image_distance = (look_from - look_at).norm();
   double aperture_diameter = FLAGS_aperture_diameter;
   Camera camera(look_from, look_at, camera_up, vertical_fov_deg, aspect_ratio, image_distance, aperture_diameter);
 
-  // TODO(nloomis): function to build the scene
   //HitableList scene = BuildScene();
   HitableList scene = BuildRandomSphereScene();
 
-  std::default_random_engine generator;
-  std::uniform_real_distribution<double> uniform(0.0, 1.0);
-
   image_util::EigenRgbImageWrapper image(nx, ny);
-
   // collapse(2) causes the par-for to be over both j and i.
   #pragma omp parallel for schedule(dynamic) collapse(2)
   for (int j = 0; j < ny; ++j) {
@@ -125,8 +131,8 @@ image_util::EigenRgbImageWrapper TraceSphereScene(int nx, int ny,
       Eigen::Vector3d summed_color = Eigen::Vector3d::Zero();
       for (int s = 0; s < samples_per_pixel; ++s) {
         // (u, v) parameterizes the canvas and ranges from [0, 1] (ish).
-        double u = (i + uniform(generator)) / nx;
-        double v = (j + uniform(generator)) / ny;
+        double u = (i + math_util::Random::Default()->Uniform()) / nx;
+        double v = (j + math_util::Random::Default()->Uniform()) / ny;
         Ray ray = camera.GetRay(u, v);
         summed_color += color(ray, scene, 0);
       }
@@ -134,7 +140,6 @@ image_util::EigenRgbImageWrapper TraceSphereScene(int nx, int ny,
       image(i, j) = pixel_color;
     }
   }
-
   return image;
 }
 
