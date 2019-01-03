@@ -124,6 +124,7 @@ image_util::EigenRgbImageWrapper TraceSphereScene(int nx, int ny,
   HitableList scene = BuildRandomSphereScene();
 
   image_util::EigenRgbImageWrapper image(nx, ny);
+  int num_pixels_computed = 0;
   // collapse(2) causes the par-for to be over both j and i.
   #pragma omp parallel for schedule(dynamic) collapse(2)
   for (int j = 0; j < ny; ++j) {
@@ -135,6 +136,9 @@ image_util::EigenRgbImageWrapper TraceSphereScene(int nx, int ny,
         double v = (j + math_util::Random::Default()->Uniform()) / ny;
         Ray ray = camera.GetRay(u, v);
         summed_color += color(ray, scene, 0);
+        #pragma omp atomic update
+        ++num_pixels_computed;
+        // TODO(nloomis): write out the counter every so often...
       }
       Eigen::Vector3d pixel_color = summed_color / samples_per_pixel;
       image(i, j) = pixel_color;
