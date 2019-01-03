@@ -12,6 +12,7 @@
 #include "ray_tracer/material.h"
 #include "ray_tracer/math_util.h"
 #include "ray_tracer/memory_util.h"
+#include "ray_tracer/progress_bar.h"
 #include "ray_tracer/ray.h"
 #include "ray_tracer/sphere.h"
 #include "third_party/eigen3/Eigen/Core"
@@ -28,7 +29,7 @@ DEFINE_double(look_at_z, -1, "Look-at z position (distance)");
 DEFINE_double(vertical_fov, 90, "Vertical field-of-view in degrees");
 DEFINE_double(aperture_diameter, 0.1, "Camera aperture in world units");
 DEFINE_string(filename, "traced_image.ppm", "Output image filename");
-
+DEFINE_int32(progress_bar_width, 50, "Width of progress bar in console");
 namespace trace {
 
 HitableList BuildScene() {
@@ -125,6 +126,9 @@ image_util::EigenRgbImageWrapper TraceSphereScene(int nx, int ny,
 
   image_util::EigenRgbImageWrapper image(nx, ny);
   int num_pixels_computed = 0;
+  int num_pixels = image.nx() * image.ny();
+  ProgressBar progress_bar(FLAGS_progress_bar_width);
+  progress_bar.Start();
   // collapse(2) causes the par-for to be over both j and i.
   #pragma omp parallel for schedule(dynamic) collapse(2)
   for (int j = 0; j < ny; ++j) {
@@ -136,14 +140,20 @@ image_util::EigenRgbImageWrapper TraceSphereScene(int nx, int ny,
         double v = (j + math_util::Random::Default()->Uniform()) / ny;
         Ray ray = camera.GetRay(u, v);
         summed_color += color(ray, scene, 0);
-        #pragma omp atomic update
-        ++num_pixels_computed;
-        // TODO(nloomis): write out the counter every so often...
       }
       Eigen::Vector3d pixel_color = summed_color / samples_per_pixel;
       image(i, j) = pixel_color;
+      #pragma omp atomic update
+      ++num_pixels_computed;
+      #pragma omp critical(progressupdate)
+      {
+        double fraction_complete = num_pixels_computed /
+         static_cast<double>(num_pixels);
+        progress_bar.Update(fraction_complete);
+      }
     }
   }
+  progress_bar.Finish();
   return image;
 }
 

@@ -23,10 +23,18 @@ cc_library(
     copts = ["-O3"],
 )
 
+cc_library(
+    name = "progress_bar",
+    srcs = ["progress_bar.cc"],
+    hdrs = ["progress_bar.h"],
+    copts = ["-O3"],
+)
+
 cc_binary(
 	name = "trace",
 	srcs = ["trace.cc"],
 	deps = [
+      ":progress_bar",
 	  ":tracer",
       "@com_github_gflags_gflags//:gflags",
       "//ppm:ppm",
