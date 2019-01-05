@@ -1,0 +1,13 @@
+--look_from_x=6
+--look_from_y=2
+--look_from_z=4
+--look_at_x=2
+--look_at_y=0.5
+--look_at_z=0
+# Distance from the look_from point to the metal sphere at (4, 1, 0)
+--focus_distance=4.58
+--nx=1200
+--ny=1200
+--samples=100
+--filename=book_example.ppm
+
