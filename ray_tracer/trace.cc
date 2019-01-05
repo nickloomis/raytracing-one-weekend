@@ -27,6 +27,9 @@ DEFINE_double(look_at_x, 1, "Look-at x position (lateral)");
 DEFINE_double(look_at_y, 0, "Look-at y position (height)");
 DEFINE_double(look_at_z, -1, "Look-at z position (distance)");
 DEFINE_double(vertical_fov, 90, "Vertical field-of-view in degrees");
+// A negative focus distance acts as a sentinal to use the look-from to look-at
+// distance instead.
+DEFINE_double(focus_distance, -1, "Distance to in-focus plane");
 DEFINE_double(aperture_diameter, 0.1, "Camera aperture in world units");
 DEFINE_string(filename, "traced_image.ppm", "Output image filename");
 DEFINE_int32(progress_bar_width, 50, "Width of progress bar in console");
@@ -52,7 +55,7 @@ HitableList BuildRandomSphereScene() {
   const double kMetalCumulativeProbability = 0.95;
 
   HitableList scene;
-  scene.Add(make_unique<Sphere>(Eigen::Vector3d(0, -1000, 0), 
+  scene.Add(make_unique<Sphere>(Eigen::Vector3d(0, -1000, 0),
     1000, std::make_shared<Lambertian>(Eigen::Vector3d(0.5, 0.5, 0.5))));
   for (int a = -11; a < 11; ++a) {
     for (int b = -11; b < 11; ++b) {
@@ -117,9 +120,16 @@ image_util::EigenRgbImageWrapper TraceSphereScene(int nx, int ny,
   Eigen::Vector3d camera_up(0, 1, 0);
   double vertical_fov_deg = FLAGS_vertical_fov;
   double aspect_ratio = double(nx) / double(ny);
-  double image_distance = (look_from - look_at).norm();
+  double image_distance = FLAGS_focus_distance > 0 ? FLAGS_focus_distance :
+     (look_from - look_at).norm();
   double aperture_diameter = FLAGS_aperture_diameter;
-  Camera camera(look_from, look_at, camera_up, vertical_fov_deg, aspect_ratio, image_distance, aperture_diameter);
+  Camera camera(look_from, look_at, camera_up, vertical_fov_deg, aspect_ratio,
+      image_distance, aperture_diameter);
+  std::cout << "Camera is looking from (" << look_from.x() << ", " <<
+      look_from.y() << ", " << look_from.z() << ") towards (" <<
+      look_at.x() << ", " << look_at.y() << ", " << look_at.z() <<
+      ") with distance = " << image_distance << " and aperture_dia = " <<
+      aperture_diameter << "\n";
 
   //HitableList scene = BuildScene();
   HitableList scene = BuildRandomSphereScene();
